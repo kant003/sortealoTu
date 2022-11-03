@@ -1,5 +1,6 @@
-import './style.css'
+import '../style.css'
 import { selectRandomFromArray } from './util'
+import  party from 'party-js'
 
 document.getElementById('button')
       .addEventListener('click', onClick)
@@ -14,8 +15,10 @@ function onClick(){
       let msg
       if(!product.value) msg='No estas sorteando nada'
       else if(!participants.value) msg = 'No hay participantes'
-      else msg = `Enhorabuena ${winnerName} has ganado ${product.value}`
-      
+      else {
+            msg = `Enhorabuena ${winnerName} has ganado ${product.value}`
+            party.confetti(winner)
+      }
       winner.innerHTML = msg
 }
 
